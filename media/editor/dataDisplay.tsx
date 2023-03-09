@@ -58,6 +58,10 @@ const dataCellUnsavedCls = css`
 	background: var(--vscode-minimapGutter-modifiedBackground);
 `;
 
+const dataCellZeroByteCls = css`
+	color: var(--vscode-tab-unfocusedInactiveForeground);
+`;
+
 const EmptyDataCell = () => (
 	<span
 		className={dataCellCls}
@@ -635,6 +639,7 @@ const DataRowContents: React.FC<{
 				key={i}
 				byte={boffset}
 				isChar={false}
+				className={value === 0x00 ? dataCellZeroByteCls : undefined}
 				value={value}
 			>{value.toString(16).padStart(2, "0").toUpperCase()}</DataCell>);
 
